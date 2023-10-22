@@ -21,3 +21,25 @@ const myFunction = function () {
   console.log("hello world");
 };
 console.log(typeof myFunction); // output function
+
+//******************** stack and heep ************************* */
+// Stack  k andar  app ko  orignal ni balkay orignal ki ik  copy di jati hai jis kay anda ap changing kr saktay hain
+
+// Heep ye orignal hi hota hai or is kay andar changing ni kr saktay
+
+//  stack example
+let myYoutubeName = "heroki467@gmail.com";
+let anOtherName = myYoutubeName;
+anOtherName = "aliheroo423@gmail.com";
+console.log(myYoutubeName);
+console.log(anOtherName);
+
+// Heep
+let UserOne = {
+  email: "king@gmail.com",
+  password: "azaz7878",
+};
+
+let UserTwo = UserOne;
+UserTwo.email = "king@google.com";
+console.log(UserTwo);
