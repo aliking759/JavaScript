@@ -13,3 +13,9 @@ if (score > 90) {
   const power = "fly";
   console.log(`user power ${power}`);
 }
+
+const userLoggedIn = true;
+const UserActivation = true;
+if (userLoggedIn && UserActivation && 100 == 100) {
+  console.log("Welcome To Studentera.org");
+}
