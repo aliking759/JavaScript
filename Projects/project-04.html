@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project no 4</title>
+    
+    <style>
+        body {
+            margin-top: 30px;
+          font-family: Arial, sans-serif;
+          background-color: #f0f0f0;
+          text-align: center;
+        }
+        .form {
+          background-color: #fff;
+          border: 1px solid #ccc;
+          padding: 20px;
+          max-width: 300px;
+          margin: 0 auto;
+          border-radius: 5px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        label {
+          font-weight: bold;
+        }
+        .guessfield {
+          width: 100%;
+          padding: 10px;
+          margin: 10px 0;
+          border: 1px solid #ccc;
+          border-radius: 3px;
+        }
+        .guessSubmit {
+          background-color: #0074d9;
+          color: #fff;
+          padding: 10px 20px;
+          border: none;
+          cursor: pointer;
+        }
+        .resultParas {
+          background-color: #fff;
+          border: 1px solid #ccc;
+          padding: 10px;
+          max-width: 300px;
+          margin: 20px auto;
+          border-radius: 5px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        .resultParas p {
+          margin: 5px 0;
+        }
+      </style>
+
+    <!-- Add the Bootstrap 5 CSS and JavaScript links -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+    <form class="form">
+        <label2 for="guessfield" id="guess">Guess A Number</label>
+            <input type="text" id="guessfield" class="guessfield">
+            <input type="submit" id="subt" value="Submit Guess" class="guessSubmit">
+    </form>
+    <div class="resultParas">
+        <p>Previous Guesses<span class="guesses"></span></p>
+        <p>Guesses Remaining<span class="lastResult">10</span></p>
+        <p class="loeOrHi"></p>
+        <button id="startButton">Start Game</button>
+        <button id="endButton">End Game</button>
+        <button id="newGameButton" style="display: none;">Start New Game</button>
+
+    </div>
+  </body>
+
+  <!-- // Leacture No 4 in js -->
+  <script src="project-04.js"></script>
+</html>
