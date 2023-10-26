@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -62,5 +62,47 @@
             }
         });
     </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add Images</title>
+</head>
+<body>
+  <main id="images">
+    <img
+      id="ul1"
+      src="https://images.unsplash.com/photo-1619823905766-e64d53e9475c?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHBvZXRyeSUyMGltYWdlcyUyMGluJTIwdXJkdSUyMGluJTIwdXNtYW4lMjBnaGF6aXxlbnwwfHwwfHx8MA%3D%3D"
+      alt=""
+    />
+    <img
+      id="ul2"
+      src="https://media.istockphoto.com/id/1637341083/photo/urdu-hand-written-calligraphy-song-poetry.webp?b=1&s=170667a&w=0&k=20&c=ve38xVjXV99aWWgc7h9UGcvYzWgEfUisXfmhqXQIQd8="
+      alt=""
+    />
+
+    <img
+      id="ul3"
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIDEk0YhQoMiKBbvOo3J74wXvQFj-_zGnUgASbd2LaJaqeYSjXNtVhpz9E51W_68JPO7k&usqp=CAU"
+      alt=""
+    />
+    <img
+      id="ul4"
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4HaOdm7vOwFKlV-WAd6B_gBM_6INNpDu1VA&usqp=CAU"
+      alt=""
+    />
+  </main>
+  <script>
+    document.getElementById("images").addEventListener("click", function (e) {
+      if (e.target.tagName === 'IMG') {
+        let removeIt = e.target;
+        removeIt.remove();
+      }
+    });
+  </script>
 </body>
 </html>
