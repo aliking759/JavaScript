@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Your Facebook-like Website</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <style>
+      /* Add your custom styles here */
+      body {
+        padding-top: 56px; /* Adjust according to your navbar height */
+      }
+      #post-container {
+        max-width: 600px;
+        margin: auto;
+      }
+      .post-image {
+        max-width: 100%;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <a class="navbar-brand" href="#">Facebook</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <!-- Add data-toggle and data-target attributes to trigger the modal -->
+            <a
+              class="nav-link"
+              href="#"
+              data-toggle="modal"
+              data-target="#questionFormModal"
+            >
+              Home
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Friends</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Messages</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Modal -->
+    <!-- Modal for Question Form -->
+    <div
+      class="modal fade"
+      id="questionFormModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="questionFormModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="questionFormModalLabel">
+              Ask a Question
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!-- Question Form -->
+            <form id="questionForm">
+              <div class="form-group">
+                <label for="question">Your Question:</label>
+                <textarea
+                  class="form-control"
+                  id="question"
+                  rows="3"
+                  required
+                ></textarea>
+              </div>
+              <!-- Add more fields if needed -->
+
+              <button
+                type="button"
+                class="btn btn-primary"
+                onclick="askQuestion()"
+              >
+                Ask
+              </button>
+            </form>
+
+            <!-- Display area for question and replies -->
+            <div id="questionAndReplies" class="mt-3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Content Section -->
+    <div id="post-container" class="mt-4">
+      <!-- Create a Post Form -->
+      <div class="card mb-3">
+        <div class="card-body">
+          <form id="postForm" enctype="multipart/form-data">
+            <!-- 8 Input Fields -->
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="input1"
+                name="name"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="father_name">Father Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="input2"
+                name="father_name"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="city">City</label>
+              <input type="text" class="form-control" id="input3" name="city" />
+            </div>
+            <div class="form-group">
+              <label for="education">Education</label>
+              <input
+                type="text"
+                class="form-control"
+                id="input4"
+                name="education"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="age">Age</label>
+              <input
+                type="number"
+                class="form-control"
+                id="input5"
+                name="age"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="input6"
+                name="email"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="input7"
+                name="password"
+                required
+              />
+            </div>
+
+            <!-- Repeat for input3 to input8 -->
+
+            <!-- Textarea for Post Content -->
+            <div class="form-group">
+              <label for="postText">Post Content</label>
+              <textarea
+                required
+                id="postText"
+                class="form-control"
+                placeholder="What's on your mind?"
+              ></textarea>
+            </div>
+
+            <!-- File Input for Image -->
+            <div class="form-group">
+              <label for="postImage">Select Image</label>
+              <input
+                type="file"
+                id="postImage"
+                class="form-control-file"
+                required
+              />
+            </div>
+
+            <button type="button" class="btn btn-primary" onclick="addPost()">
+              Post
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Display Posts -->
+      <div id="posts" class="card mb-3">
+        <!-- Posts will be dynamically added here -->
+      </div>
+    </div>
+
+    <!-- JavaScript and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script>
+      // Function to add post
+      var questionsAndAnswers = [];
+
+      function askQuestion() {
+        var question = document.getElementById("question").value;
+
+        if (question.trim() !== "") {
+          displayQuestion(question);
+          document.getElementById("question").value = "";
+          questionsAndAnswers.push({ type: "question", content: question });
+        }
+      }
+
+      function displayQuestion(question) {
+        var questionAndReplies = document.getElementById("questionAndReplies");
+        var questionElement = document.createElement("div");
+
+        questionElement.innerHTML = `<p><strong>Question:</strong> ${question}</p>`;
+        questionAndReplies.appendChild(questionElement);
+
+        var replyForm = document.createElement("form");
+        replyForm.innerHTML = `
+    <div class="form-group">
+      <label for="reply">Your Reply:</label>
+      <textarea class="form-control" rows="2" required></textarea>
+    </div>
+    <button type="button" class="btn btn-primary" onclick="replyToQuestion(this, '${question}')">
+      Reply
+    </button>
+  `;
+        questionAndReplies.appendChild(replyForm);
+      }
+
+      function replyToQuestion(replyButton, question) {
+        var reply =
+          replyButton.previousElementSibling.querySelector("textarea").value;
+
+        if (reply.trim() !== "") {
+          var replyElement = document.createElement("p");
+          replyElement.innerHTML = `<strong>Reply:</strong> ${reply}`;
+          replyButton.parentElement.appendChild(replyElement);
+          replyButton.previousElementSibling.querySelector("textarea").value =
+            "";
+
+          questionsAndAnswers.push({
+            type: "answer",
+            content: reply,
+            relatedQuestion: question,
+          });
+          $("#questionFormModal").modal("hide");
+        }
+      }
+      // Function to add post
+      function addPost() {
+        // Retrieve input values
+        var input1 = document.getElementById("input1").value;
+        var input2 = document.getElementById("input2").value;
+        var input3 = document.getElementById("input3").value;
+        var input4 = document.getElementById("input4").value;
+        var input5 = document.getElementById("input5").value;
+        var input6 = document.getElementById("input6").value;
+        var input7 = document.getElementById("input7").value;
+        // Repeat for input3 to input8
+        var postText = document.getElementById("postText").value;
+        var postImage = document.getElementById("postImage").files[0];
+
+        // Check if any of the fields is not empty
+        if (
+          input1.trim() !== "" ||
+          input2.trim() !== "" ||
+          input3.trim() !== "" ||
+          input4.trim() !== "" ||
+          input5.trim() !== "" ||
+          input6.trim() !== "" ||
+          input7.trim() !== "" ||
+          postText.trim() !== "" ||
+          postImage
+        ) {
+          // Create post container
+          var postContainer = document.getElementById("posts");
+          var newPost = document.createElement("div");
+          newPost.className = "card mb-3";
+          newPost.innerHTML = `
+            <div class="card-body">
+              <h5 class="card-title">User</h5>
+              <p class="card-text">Input 1: ${input1}</p>
+              <p class="card-text">Input 2: ${input2}</p>
+              <p class="card-text">Input 3: ${input3}</p>
+              <p class="card-text">Input 4: ${input4}</p>
+              <p class="card-text">Input 5: ${input5}</p>
+              <p class="card-text">Input 6: ${input6}</p>
+              <p class="card-text">Input 7: ${input7}</p>
+              <!-- Repeat for input3 to input8 -->
+              <p class="card-text">Post Content: ${postText}</p>
+              ${
+                postImage
+                  ? `<img src="${URL.createObjectURL(
+                      postImage
+                    )}" class="post-image" alt="Posted Image">`
+                  : ""
+              }
+            </div>
+          `;
+          postContainer.insertBefore(newPost, postContainer.firstChild);
+        }
+
+        // Save post data to local storage
+        savePost({
+          input1: input1,
+          input2: input2,
+          input3: input3,
+          input4: input4,
+          input5: input5,
+          input6: input6,
+          input7: input7,
+          postText: postText,
+          postImage: postImage ? convertImageToDataUrl(postImage) : null,
+        });
+
+        // Clear the inputs after posting
+        document.getElementById("input1").value = "";
+        document.getElementById("input2").value = "";
+        document.getElementById("input3").value = "";
+        document.getElementById("input4").value = "";
+        document.getElementById("input5").value = "";
+        document.getElementById("input6").value = "";
+        document.getElementById("input7").value = "";
+        document.getElementById("postText").value = "";
+        document.getElementById("postImage").value = "";
+      }
+
+      // Function to save posts to local storage
+      function savePost(postData) {
+        // ... (your existing savePost function)
+      }
+    </script>
+  </body>
+</html>
